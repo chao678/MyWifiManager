@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666666"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/img_wifi_level"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/wifi_signal" />
+	<LinearLayout
+	    android:layout_toRightOf="@id/img_wifi_level"
+	    android:layout_height="30dp"
+	    android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical" >
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:text="11111"
+        />
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textSize="12sp"
+        android:visibility="gone"
+         android:text="11111"
+        />
+   </LinearLayout>
+</RelativeLayout>
