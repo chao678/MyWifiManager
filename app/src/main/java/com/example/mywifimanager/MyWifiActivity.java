@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -110,6 +111,7 @@ public class MyWifiActivity extends AppCompatActivity {
                 } else {
                     tv2.setVisibility(View.GONE);
                 }
+
             }
         };
         listView.setAdapter(adapter);
@@ -167,9 +169,9 @@ public class MyWifiActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
                 // 本机已经配置过的wifi
-                final ScanResult wifi=mScanWifiList.get(position).scanResult;
-                final WifiConfiguration wifiConfig=linkWifi.IsExsits(wifi.SSID);
-                if(wifiConfig!= null){
+                final ScanResult wifi = mScanWifiList.get(position).scanResult;
+                final WifiConfiguration wifiConfig = linkWifi.IsExsits(wifi.SSID);
+                if(wifiConfig != null){
                     final int netID = wifiConfig.networkId;
                     String actionStr;
                     // 如果目前连接了此网络

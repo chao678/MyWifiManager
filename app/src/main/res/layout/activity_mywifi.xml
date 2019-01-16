@@ -19,7 +19,7 @@
             />
         <!--wifi开关按钮-->
         <Switch
-            android:id="@+id/switch_status"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOff="OFF"
@@ -28,9 +28,11 @@
             android:thumb="@drawable/switch_custom_thumb_selector"
             android:track="@drawable/switch_custom_track_selector" />
         <Switch
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Switch
+            android:id="@+id/switch_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:thumb="@drawable/switch_ios_thumb"
