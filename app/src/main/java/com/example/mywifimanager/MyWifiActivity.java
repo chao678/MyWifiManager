@@ -170,7 +170,7 @@ public class MyWifiActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 // 本机已经配置过的wifi
                 final ScanResult wifi = mScanWifiList.get(position).scanResult;
-                final WifiConfiguration wifiConfig = linkWifi.IsExsits(wifi.SSID);
+                final WifiConfiguration wifiConfig = linkWifi.isExsits(wifi.SSID);
                 if(wifiConfig != null){
                     final int netID = wifiConfig.networkId;
                     String actionStr;
@@ -194,7 +194,7 @@ public class MyWifiActivity extends AppCompatActivity {
                                     } else {
 
                                         linkWifi.setMaxPriority(wifiConfig);
-                                        linkWifi.ConnectToNetID(wifiConfig.networkId);
+                                        linkWifi.connectToNetID(wifiConfig.networkId);
                                     }
 
                                 }
@@ -241,10 +241,10 @@ public class MyWifiActivity extends AppCompatActivity {
                                             String wifipwd = pwd.getText().toString();
 
                                             // 此处加入连接wifi代码
-                                            int netID = linkWifi.CreateWifiInfo2(
+                                            int netID = linkWifi.createWifiInfo2(
                                                     wifi, wifipwd);
 
-                                            linkWifi.ConnectToNetID(netID);
+                                            linkWifi.connectToNetID(netID);
                                         }
                                     })
                             .setNegativeButton("取消",
@@ -266,10 +266,10 @@ public class MyWifiActivity extends AppCompatActivity {
                                                             int whichButton) {
 
                                             // 此处加入连接wifi代码
-                                            int netID = linkWifi.CreateWifiInfo2(
+                                            int netID = linkWifi.createWifiInfo2(
                                                     wifi, "");
 
-                                            linkWifi.ConnectToNetID(netID);
+                                            linkWifi.connectToNetID(netID);
                                         }
                                     })
                             .setNegativeButton("取消",
@@ -338,7 +338,7 @@ public class MyWifiActivity extends AppCompatActivity {
                         boolean1=false;
                     }
                     mScanwifi=new MScanWifi(mWifiList.get(i),mwifiName,level,boolean1);
-                    if(linkWifi.IsExsits(mwifiName)!=null){
+                    if(linkWifi.isExsits(mwifiName)!=null){
                         mScanwifi.setIsExsit(true);
                     }
                     else {mScanwifi.setIsExsit(false);

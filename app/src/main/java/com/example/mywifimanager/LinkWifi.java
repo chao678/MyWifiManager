@@ -24,11 +24,11 @@ public class LinkWifi {
 		wifiManager = (WifiManager) context
 				.getSystemService(Service.WIFI_SERVICE);
 	}
-	public boolean ConnectToNetID(int netID) {
+	public boolean connectToNetID(int netID) {
 		System.out.println("ConnectToNetID netID=" + netID);
 		return wifiManager.enableNetwork(netID, true);
 	}
-	public int CreateWifiInfo2(ScanResult wifiinfo, String pwd) {
+	public int createWifiInfo2(ScanResult wifiinfo, String pwd) {
 		WifiCipherType type;
 
 		if (wifiinfo.capabilities.contains("WPA2-PSK")) {
@@ -48,7 +48,7 @@ public class LinkWifi {
 			type = WifiCipherType.WIFI_CIPHER_NOPASS;
 		}
 
-		WifiConfiguration config = CreateWifiInfo(wifiinfo.SSID,
+		WifiConfiguration config = createWifiInfo(wifiinfo.SSID,
 				wifiinfo.BSSID, pwd, type);
 		if (config != null) {
 			return wifiManager.addNetwork(config);
@@ -57,12 +57,12 @@ public class LinkWifi {
 		}
 	}
 	/** 配置一个连接 */
-	public WifiConfiguration CreateWifiInfo(String SSID, String BSSID,
+	public WifiConfiguration createWifiInfo(String SSID, String BSSID,
 											String password, WifiCipherType type) {
 
 		int priority;
 
-		WifiConfiguration config = this.IsExsits(SSID);
+		WifiConfiguration config = this.isExsits(SSID);
 		if (config != null) {
 			// Log.w("Wmt", "####之前配置过这个网络，删掉它");
 			// wifiManager.removeNetwork(config.networkId); // 如果之前配置过这个网络，删掉它
@@ -162,7 +162,7 @@ public class LinkWifi {
 		return config;
 	}
 	/** 查看以前是否也配置过这个网络 */
-	public WifiConfiguration IsExsits(String SSID) {
+	public WifiConfiguration isExsits(String SSID) {
 		List<WifiConfiguration> existingConfigs = wifiManager
 				.getConfiguredNetworks();
 
