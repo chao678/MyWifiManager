@@ -91,6 +91,7 @@ public class MyWifiActivity extends AppCompatActivity {
         registerListener();
         registerBroadcast();
         test();
+        String s3 = "s3";
     }
 
     private void initView() {
