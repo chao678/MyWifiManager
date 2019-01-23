@@ -393,6 +393,6 @@ public class MyWifiActivity extends AppCompatActivity {
         LayoutAnimationController controller = new LayoutAnimationController(set, 0.5f);
 
         listView.setLayoutAnimation(controller);
-
+        String s4 = "s4";
     }
 }
