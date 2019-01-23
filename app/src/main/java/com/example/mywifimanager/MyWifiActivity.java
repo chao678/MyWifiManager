@@ -378,7 +378,6 @@ public class MyWifiActivity extends AppCompatActivity {
     }
 
     private void test() {
-
         AnimationSet set = new AnimationSet(true);
 
         Animation animation = new AlphaAnimation(0.0f, 1.0f);
