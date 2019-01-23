@@ -92,6 +92,7 @@ public class MyWifiActivity extends AppCompatActivity {
         registerBroadcast();
         test();
         String s3 = "s3";
+        String s5 = "s5";
     }
 
     private void initView() {
