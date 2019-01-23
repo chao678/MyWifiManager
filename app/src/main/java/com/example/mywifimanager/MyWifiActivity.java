@@ -1,5 +1,7 @@
 package com.example.mywifimanager;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -18,6 +20,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -84,6 +91,7 @@ public class MyWifiActivity extends AppCompatActivity {
         initView();
         registerListener();
         registerBroadcast();
+        test();
     }
 
     private void initView() {
@@ -368,5 +376,25 @@ public class MyWifiActivity extends AppCompatActivity {
         super.onDestroy();
         context.unregisterReceiver(mReceiver); // 注销此广播接收器
         myHandler.removeCallbacks(run);
+    }
+
+    private void test() {
+
+        AnimationSet set = new AnimationSet(true);
+
+        Animation animation = new AlphaAnimation(0.0f, 1.0f);
+        animation.setDuration(50);
+        set.addAnimation(animation);
+
+        animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+                -1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+        animation.setDuration(100);
+        set.addAnimation(animation);
+
+        LayoutAnimationController controller = new LayoutAnimationController(set, 0.5f);
+
+        listView.setLayoutAnimation(controller);
+
     }
 }
