@@ -87,7 +87,6 @@ public class MyWifiActivity extends AppCompatActivity {
                 }
             }
         };
-
         initView();
         registerListener();
         registerBroadcast();
