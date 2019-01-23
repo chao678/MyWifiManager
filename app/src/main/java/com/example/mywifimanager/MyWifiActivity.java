@@ -178,7 +178,7 @@ public class MyWifiActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 // 本机已经配置过的wifi
                 final ScanResult wifi = mScanWifiList.get(position).scanResult;
-                final WifiConfiguration wifiConfig = linkWifi.IsExsits(wifi.SSID);
+                final WifiConfiguration wifiConfig = linkWifi.isExsits(wifi.SSID);
                 if(wifiConfig != null){
                     final int netID = wifiConfig.networkId;
                     String actionStr;
