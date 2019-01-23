@@ -91,8 +91,6 @@ public class MyWifiActivity extends AppCompatActivity {
         registerListener();
         registerBroadcast();
         test();
-        String s3 = "s3";
-        String s5 = "s5";
     }
 
     private void initView() {
@@ -395,6 +393,5 @@ public class MyWifiActivity extends AppCompatActivity {
         LayoutAnimationController controller = new LayoutAnimationController(set, 0.5f);
 
         listView.setLayoutAnimation(controller);
-        String s4 = "s4";
     }
 }
