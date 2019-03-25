@@ -4,11 +4,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.Service;
+import android.arch.lifecycle.Lifecycle;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
@@ -60,6 +63,8 @@ public class MyWifiActivity extends AppCompatActivity {
     Runnable run;
     Handler myHandler;
 
+    ConnectivityManager cm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +96,8 @@ public class MyWifiActivity extends AppCompatActivity {
         registerListener();
         registerBroadcast();
         test();
+
+        cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     private void initView() {
@@ -128,6 +135,7 @@ public class MyWifiActivity extends AppCompatActivity {
         mFilter = new IntentFilter();
         mFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         mFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(mReceiver, mFilter);
     }
 
@@ -148,6 +156,11 @@ public class MyWifiActivity extends AppCompatActivity {
                 Log.d(TAG, "wifiState=" + wifiState);
             } else if (action.equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
                 updateWifiList();
+            }
+            if (ConnectivityManager.CONNECTIVITY_ACTION.equals(action)) {
+                //获取当前网络状态
+                int networkType = intent.getIntExtra("networkType", -1);
+                connChange(networkType);
             }
         }
     };
@@ -375,6 +388,27 @@ public class MyWifiActivity extends AppCompatActivity {
         super.onDestroy();
         context.unregisterReceiver(mReceiver); // 注销此广播接收器
         myHandler.removeCallbacks(run);
+    }
+
+    private void connChange(int state) {
+
+        switch (state) {
+            case -1:
+                break;
+            case ConnectivityManager.TYPE_MOBILE:
+
+                break;
+            case ConnectivityManager.TYPE_WIFI:
+                NetworkInfo info = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+                if (info != null && info.isConnected()) {
+                    Log.i(TAG, "Wifi网络连接成功");
+                    Toast.makeText(context, "Wifi网络连接成功", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+
+                break;
+        }
     }
 
     private void test() {
