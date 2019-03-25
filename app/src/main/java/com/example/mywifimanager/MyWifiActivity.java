@@ -403,6 +403,9 @@ public class MyWifiActivity extends AppCompatActivity {
                 if (info != null && info.isConnected()) {
                     Log.i(TAG, "Wifi网络连接成功");
                     Toast.makeText(context, "Wifi网络连接成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.i(TAG, "Wifi网络连接断开");
+                    Toast.makeText(context, "Wifi网络连接断开", Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
