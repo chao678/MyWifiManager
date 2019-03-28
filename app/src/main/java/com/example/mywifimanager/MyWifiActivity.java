@@ -414,6 +414,20 @@ public class MyWifiActivity extends AppCompatActivity {
         }
     }
 
+    //判断是否能够上外网
+    public synchronized boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && ni.isConnectedOrConnecting();
+    }
+
+    //判断是否能够上外网
+    public boolean isShangWang() {
+        ConnectivityManager cwjManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cwjManager.getActiveNetworkInfo();
+        return info != null && info.isAvailable();
+    }
+
     private void test() {
         AnimationSet set = new AnimationSet(true);
 
